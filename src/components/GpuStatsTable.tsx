@@ -28,7 +28,7 @@ export function GpuStatsTable({ stats }: GpuStatsTableProps) {
           {stats.map((stat) =>
             stat.gpus.map((gpu, gpuIndex) => {
               const isLastGpuInHost = gpuIndex === stat.gpus.length - 1;
-              const cellClassName = `py-2 px-3 ${
+              const cellClassName = `py-2 px-1 ${
                 isLastGpuInHost ? "border-b-2 border-stone-200" : ""
               }`;
               const centeredCellClassName = `${cellClassName} text-center`;
@@ -36,6 +36,9 @@ export function GpuStatsTable({ stats }: GpuStatsTableProps) {
                 "Ada Generation",
                 "Ada"
               );
+              const gpuUtilization = gpu["utilization.gpu"] ?? 0;
+              const gpuUtilization80 = Math.max(gpuUtilization - 80, 0);
+              const gpuUtilizationEmojiSize = (gpuUtilization80 / 20) * 16;
               return (
                 <tr
                   key={`${stat.hostname}-${gpu.uuid}`}
@@ -50,6 +53,12 @@ export function GpuStatsTable({ stats }: GpuStatsTableProps) {
                   </td>
                   <td className={centeredCellClassName}>
                     {gpu["utilization.gpu"]} %
+                    <span
+                      className="ml-1"
+                      style={{ fontSize: gpuUtilizationEmojiSize + "px" }}
+                    >
+                      🔥
+                    </span>
                   </td>
                   <td className={centeredCellClassName}>
                     {(() => {
@@ -61,7 +70,18 @@ export function GpuStatsTable({ stats }: GpuStatsTableProps) {
                       const memoryTotalGib = isAvailable(memoryTotal)
                         ? (memoryTotal / 1024).toFixed(1)
                         : "N/A";
-                      return `${memoryUsedGib} / ${memoryTotalGib}`;
+                      let emoji = "";
+                      if (isAvailable(memoryUsed) && isAvailable(memoryTotal)) {
+                        const memoryUsedRatio = memoryUsed / memoryTotal;
+                        if (memoryUsedRatio >= 0.9) {
+                          emoji = "😭";
+                        } else if (memoryUsedRatio >= 0.8) {
+                          emoji = "😢️";
+                        } else if (memoryUsedRatio >= 0.7) {
+                          emoji = "🥺️";
+                        }
+                      }
+                      return `${memoryUsedGib} / ${memoryTotalGib} ${emoji}`;
                     })()}
                   </td>
                   <td className={cellClassName}>
