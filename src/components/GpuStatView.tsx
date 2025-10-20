@@ -5,6 +5,7 @@ import { GpuStatsContext, GpuStatsContextType } from "./GpuStatsContext";
 import { GpuStatsTable } from "./GpuStatsTable";
 import { HostStats } from "./HostStats";
 import "./GpuStatView.css";
+import { Refresh } from "./Refresh";
 
 const GpuStatusDisplay = () => {
   const growiReactInstance = growiReact(React);
@@ -44,9 +45,10 @@ const GpuStatusDisplay = () => {
       <div className="flex items-center mb-2">
         <button
           onClick={refresh}
-          className="p-2 rounded-full hover:bg-gray-200 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="w-10 h-10 p-2 rounded-full hover:bg-gray-200 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center"
+          style={{ borderRadius: "50%" }}
         >
-          <img src="/refresh.svg" alt="Refresh" className="w-6 h-6" />
+          <Refresh className="w-6 h-6" color="#2b7fff" />
         </button>
         <div className="ml-1 text-lg text-gray-600">
           <p className="m-0">Last Updated: {formatApiDate(lastApiUpdate)}</p>
