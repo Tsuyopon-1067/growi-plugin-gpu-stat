@@ -1,4 +1,5 @@
-import React, { useId } from "react";
+import React from "react";
+import { growiReact } from "@growi/pluginkit";
 import { getColor } from "../lib/gradationColor";
 
 type CircularGaugeProps = {
@@ -32,6 +33,9 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
   tickCount = 10,
   colors = getColor,
 }) => {
+  const growiReactInstance = growiReact(React);
+  const { useId } = growiReactInstance;
+
   const uniqueId = useId();
   const gradientId = `gaugeGradient-${uniqueId}`;
   const shadowId = `shadow-${uniqueId}`;
