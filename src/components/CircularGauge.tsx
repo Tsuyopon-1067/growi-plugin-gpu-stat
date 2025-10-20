@@ -53,7 +53,7 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
   const strokeDashoffset = totalArcLength * (1 - percentage / 100);
 
   // パスの描画用の極座標から直交座標への変換
-  const polarToCartesian = (angle, r = radius) => {
+  const polarToCartesian = (angle: number, r = radius) => {
     const angleInRadians = ((angle - 90) * Math.PI) / 180;
     return {
       x: center + r * Math.cos(angleInRadians),
@@ -62,7 +62,7 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
   };
 
   // 背景の円弧パス
-  const createArcPath = (start, end, r = radius) => {
+  const createArcPath = (start: number, end: number, r = radius) => {
     const startPoint = polarToCartesian(start, r);
     const endPoint = polarToCartesian(end, r);
     const largeArcFlag = end - start <= 180 ? "0" : "1";

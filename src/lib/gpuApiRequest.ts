@@ -34,6 +34,7 @@ export interface GpuStat {
 
 // gpuStats.ts
 export async function fetchGpuStats(url: string): Promise<GpuStat[]> {
+  let text: string = '';
   try {
     const response = await fetch(url);
 
@@ -41,7 +42,7 @@ export async function fetchGpuStats(url: string): Promise<GpuStat[]> {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    let text = await response.text();
+    text = await response.text();
 
     // 連続するコンマを1つに置換
     text = text.replace(/,{2,}/g, ",");
