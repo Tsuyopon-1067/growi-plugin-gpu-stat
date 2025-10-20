@@ -1,0 +1,2 @@
+# growi-plugin-gpu-stat
+
