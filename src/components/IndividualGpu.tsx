@@ -25,12 +25,12 @@ export function IndividualGpu({ gpu }: IndividualGpuProps) {
       </div>
       <div className={styles.gauges}>
         <div />
-        <VerticalGauge value={gpuTemperature} max={100} height={200} />
+        <VerticalGauge value={gpuTemperature} max={100} height={130} />
         <div />
         <CircularGauge
           value={gpuUtlization}
           subLabel={`${powerDraw}W`}
-          label="GPU Utilization"
+          label="Utilization"
           unit="%"
         />
         <div />

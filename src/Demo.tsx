@@ -16,6 +16,8 @@ function MersenneTwister(seed) {
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <GpuStatView />
+    <div style={{ width: "665px" }}>
+      <GpuStatView />
+    </div>
   </React.StrictMode>
 );

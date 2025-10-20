@@ -31,7 +31,7 @@ const GpuStatusDisplay = () => {
     dateString ? formatDate(new Date(dateString)) : "N/A";
 
   const tabStyle = (tabName: string) =>
-    `px-4 py-2 text-2xl font-semibold border-b-2${
+    `px-4 py-2 text-lg font-semibold border-b-2${
       activeTab === tabName
         ? "border-blue-500 text-blue-600"
         : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
@@ -45,12 +45,12 @@ const GpuStatusDisplay = () => {
       <div className="flex items-center mb-2">
         <button
           onClick={refresh}
-          className="w-10 h-10 p-2 rounded-full hover:bg-gray-200 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center"
+          className="w-8 h-8 p-2 rounded-full hover:bg-gray-200 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400 flex items-center justify-center"
           style={{ borderRadius: "50%" }}
         >
           <Refresh className="w-6 h-6" color="#2b7fff" />
         </button>
-        <div className="ml-1 text-lg text-gray-600">
+        <div className="text-sm text-gray-600">
           <p className="m-0">Last Updated: {formatApiDate(lastApiUpdate)}</p>
         </div>
       </div>

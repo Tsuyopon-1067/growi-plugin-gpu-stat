@@ -16,7 +16,7 @@ export const VerticalGauge: React.FC<VerticalGaugeProps> = ({
   min = 0,
   max = 100,
   height = 200,
-  width = 20,
+  width = 16,
   animated = true,
 }) => {
   const growiReactInstance = growiReact(React);
@@ -55,7 +55,7 @@ export const VerticalGauge: React.FC<VerticalGaugeProps> = ({
   }, [value]);
 
   return (
-    <div className="flex flex-col items-center gap-4 p-4">
+    <div className="flex flex-col items-center gap-1 pb-1 pt-2 px-0">
       <div
         className="relative flex items-start gap-4"
         style={{ height: `${height}px` }}
@@ -89,11 +89,11 @@ export const VerticalGauge: React.FC<VerticalGaugeProps> = ({
               style={{
                 bottom: `${tick}%`,
                 transform: "translateY(50%)",
-                left: "-12px",
+                left: "-16px",
               }}
             >
               <div className="w-3 h-0.5 bg-gray-400" />
-              <span className="text-xs text-gray-600 font-medium">
+              <span className="text-xs text-gray-600 font-[10px] w-[24px]">
                 {Math.round(min + ((max - min) * tick) / 100)}
               </span>
             </div>
@@ -104,7 +104,7 @@ export const VerticalGauge: React.FC<VerticalGaugeProps> = ({
       {/* 現在値の表示 */}
       <div className="text-center">
         <div
-          className="text-3xl font-bold"
+          className="text-xl font-semibold w-[80px]"
           style={{ color: getColor(normalizedValue) }}
         >
           {currentValue.toFixed(1)}°C

@@ -11,24 +11,24 @@ const isAvailable = (value: number | undefined) => {
 export function GpuStatsTable({ stats }: GpuStatsTableProps) {
   return (
     <div className="overflow-x-auto w-full">
-      <table className="w-full bg-white text-3xl">
+      <table className="w-full bg-white text-xl">
         <thead>
           <tr>
-            <th className="py-4 px-4 border-b-2 border-stone-200">サーバ</th>
-            <th className="py-4 px-2 border-b-2 border-stone-200">GPU</th>
-            <th className="py-4 px-4 border-b-2 border-stone-200">温度</th>
-            <th className="py-4 px-4 border-b-2 border-stone-200">計算負荷</th>
-            <th className="py-4 px-4 border-b-2 border-stone-200">
+            <th className="py-2 px-3 border-b-2 border-stone-200">サーバ</th>
+            <th className="py-2 px-3 border-b-2 border-stone-200">GPU</th>
+            <th className="py-2 px-3 border-b-2 border-stone-200">温度</th>
+            <th className="py-2 px-3 border-b-2 border-stone-200">計算負荷</th>
+            <th className="py-2 px-3 border-b-2 border-stone-200">
               メモリ (GiB)
             </th>
-            <th className="py-4 px-4 border-b-2 border-stone-200">利用者</th>
+            <th className="py-2 px-3 border-b-2 border-stone-200">利用者</th>
           </tr>
         </thead>
         <tbody>
           {stats.map((stat) =>
             stat.gpus.map((gpu, gpuIndex) => {
               const isLastGpuInHost = gpuIndex === stat.gpus.length - 1;
-              const cellClassName = `py-4 px-4 ${
+              const cellClassName = `py-2 px-3 ${
                 isLastGpuInHost ? "border-b-2 border-stone-200" : ""
               }`;
               const centeredCellClassName = `${cellClassName} text-center`;

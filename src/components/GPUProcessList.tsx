@@ -20,11 +20,11 @@ export const GPUProcessList: React.FC<GPUProcessListProps> = ({
     .join(", ");
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-w-[160px]">
       <div className="px-4 py-1 mb-2 text-sm font-semibold text-gray-600 uppercase tracking-wide">
         Processes
       </div>
-      <div className="px-4 py-2 mb-8 text-xl flex-1 border-l-2 border-gray-300 box-border">
+      <div className="px-4 py-2 ml-2 mb-3 text-xs flex-1 border-l-2 border-gray-300 box-border">
         {processText}
       </div>
     </div>

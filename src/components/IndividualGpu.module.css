@@ -12,14 +12,14 @@
 }
 
 .gpuName {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .gauges {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 0.5fr 134px 1fr 316px 1fr 316px 1fr 300px 0.5fr;
-  gap: 1rem;
+  grid-template-columns: 0.5fr 80px 1fr 200px 1fr 200px 1fr 170px 0.5fr;
+  gap: 4px;
   overflow-x: auto;
 }

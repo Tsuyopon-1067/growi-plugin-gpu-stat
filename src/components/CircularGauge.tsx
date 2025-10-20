@@ -24,8 +24,8 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
   max = 100,
   startAngle = -135,
   endAngle = 135,
-  size = 250,
-  strokeWidth = 20,
+  size = 140,
+  strokeWidth = 12,
   label = "Performance",
   subLabel,
   unit = "%",
@@ -80,8 +80,8 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
     for (let i = 0; i <= tickCount; i++) {
       const angle = startAngle + (angleRange * i) / tickCount;
       const startPoint = polarToCartesian(angle, radius + 5);
-      const endPoint = polarToCartesian(angle, radius + 15);
-      const textPoint = polarToCartesian(angle, radius + 25);
+      const endPoint = polarToCartesian(angle, radius + 12);
+      const textPoint = polarToCartesian(angle, radius + 20);
       const tickValue = min + ((max - min) * i) / tickCount;
 
       ticks.push(
@@ -99,7 +99,7 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
             y={textPoint.y}
             textAnchor="middle"
             dominantBaseline="middle"
-            className="text-xs fill-slate-600"
+            className="text-[10px] fill-slate-600"
           >
             {Math.round(tickValue)}
           </text>
@@ -112,7 +112,7 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
   const gaugeColor = colors(percentage);
 
   return (
-    <div className="flex flex-col items-center py-6 px-8">
+    <div className="flex flex-col items-center pt-6 pb-0 px-2">
       <svg
         width={size}
         height={size}
@@ -165,27 +165,28 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
           y={center - (subLabel ? 20 : 10)}
           textAnchor="middle"
           dominantBaseline="middle"
-          className="text-4xl font-bold fill-slate-800"
+          className="text-2xl font-semibold fill-slate-800"
         >
           {normalizedValue.toFixed(1)}
-          <tspan className="text-2xl fill-slate-600">{unit}</tspan>
+          <tspan className="text-base fill-slate-600">{unit}</tspan>
         </text>
 
         {subLabel && (
           <text
             x={center}
-            y={center + 15}
+            y={center + 8}
             textAnchor="middle"
             dominantBaseline="middle"
-            className="text-xl font-bold fill-slate-500"
+            className="text-xl font-semibold fill-slate-500"
           >
-            {subLabel}
+            {normalizedValue.toFixed(1)}
+            <tspan className="text-xs fill-slate-500">W</tspan>
           </text>
         )}
 
         <text
           x={center}
-          y={center + (subLabel ? 40 : 20)}
+          y={center + (subLabel ? 32 : 15)}
           textAnchor="middle"
           dominantBaseline="middle"
           className="text-sm fill-slate-500"
