@@ -14,13 +14,13 @@ export function IndividualGpu({ gpu }: IndividualGpuProps) {
   const memoryTotal = gpu["memory.total"] ?? 0;
   const gpuTemperature = gpu["temperature.gpu"] ?? 0;
   const powerDraw = gpu["power.draw"] ?? 0;
-  console.log(gpu.name, gpu.index);
+  const memoryTotalGib = (memoryTotal / 1024).toFixed(1);
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h3 className={styles.gpuName}>
-          GPU {gpu.index}: {gpu.name}
+          GPU {gpu.index}: {gpu.name} | {memoryTotalGib} GiB
         </h3>
       </div>
       <div className={styles.gauges}>
@@ -29,7 +29,7 @@ export function IndividualGpu({ gpu }: IndividualGpuProps) {
         <div />
         <CircularGauge
           value={gpuUtlization}
-          subLabel={`${powerDraw}W`}
+          subLabel={powerDraw.toString()}
           label="Utilization"
           unit="%"
         />

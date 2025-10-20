@@ -179,7 +179,7 @@ export const CircularGauge: React.FC<CircularGaugeProps> = ({
             dominantBaseline="middle"
             className="text-xl font-semibold fill-slate-500"
           >
-            {normalizedValue.toFixed(1)}
+            {subLabel}
             <tspan className="text-xs fill-slate-500">W</tspan>
           </text>
         )}
