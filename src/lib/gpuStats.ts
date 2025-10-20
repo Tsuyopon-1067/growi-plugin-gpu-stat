@@ -14,7 +14,7 @@ export async function fetchGpuStats(url: string): Promise<GpuStatsResponse> {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const lastModified = response.headers.get("Last-Modified");
+    const lastModified = new Date().toISOString();
 
     text = await response.text();
 
