@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import React from "react";
+import { growiReact } from "@growi/pluginkit";
 import { GpuStatsProvider } from "./GpuStatsProvider";
 import { GpuStatsContext, GpuStatsContextType } from "./GpuStatsContext";
 import { GpuStatsTable } from "./GpuStatsTable";
@@ -6,6 +7,8 @@ import { HostStats } from "./HostStats";
 import "./GpuStatView.css";
 
 const GpuStatusDisplay = () => {
+  const growiReactInstance = growiReact(React);
+  const { useState, useContext } = growiReactInstance;
   const context = useContext(GpuStatsContext);
   const [activeTab, setActiveTab] = useState<string>("all");
 

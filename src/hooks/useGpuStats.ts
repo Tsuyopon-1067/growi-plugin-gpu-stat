@@ -1,10 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import React from "react";
+import { growiReact } from "@growi/pluginkit";
 import type { GpuStat } from "../lib/models";
 import { fetchGpuStats } from "../lib/gpuStats";
 
 const API_URL = import.meta.env.VITE_GPU_STAT_API_URL || "/__gpustat__";
 
 export function useGpuStats() {
+  const growiReactInstance = growiReact(React);
+  const { useState, useCallback, useEffect } = growiReactInstance;
+
   const [stats, setStats] = useState<GpuStat[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [lastClientUpdate, setLastClientUpdate] = useState<Date | null>(null);

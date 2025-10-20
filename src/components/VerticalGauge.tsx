@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { growiReact } from "@growi/pluginkit";
 import { getColor } from "../lib/gradationColor";
 
 interface VerticalGaugeProps {
@@ -18,6 +19,9 @@ export const VerticalGauge: React.FC<VerticalGaugeProps> = ({
   width = 20,
   animated = true,
 }) => {
+  const growiReactInstance = growiReact(React);
+  const { useState, useEffect } = growiReactInstance;
+
   const [currentValue, setCurrentValue] = useState(value);
 
   // 値を0-100の範囲に正規化
