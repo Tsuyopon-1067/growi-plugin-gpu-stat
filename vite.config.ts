@@ -8,6 +8,12 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), tailwindcss()],
+    build: {
+      manifest: true,
+      rollupOptions: {
+        input: ["/client-entry.tsx"],
+      },
+    },
     server: {
       proxy: {
         "/__gpustat__": {
